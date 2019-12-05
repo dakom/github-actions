@@ -39,6 +39,7 @@ function formatReleaseURL(os: string, arch: string, version: string): string {
 export function getReleaseURL(os: string, arch: string, version: string):Promise<string> {
   try {
     const url = formatReleaseURL(os, arch, version);
+    console.log(url);
     const client: httpm.HttpClient = new httpm.HttpClient('github-actions-setup-gcloud');
     return client.get(url)
       .then(res => res.message.statusCode === 200 
